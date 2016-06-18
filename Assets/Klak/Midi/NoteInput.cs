@@ -29,223 +29,262 @@ using MidiJack;
 
 namespace Klak.Midi
 {
-    [AddComponentMenu("Klak/MIDI/Note Input")]
-    public class NoteInput : MonoBehaviour
-    {
-        #region Nested Public Classes
+	[AddComponentMenu ("Klak/MIDI/Note Input")]
+	public class NoteInput : MonoBehaviour
+	{
+		#region Nested Public Classes
 
-        public enum EventType {
-            Trigger, Gate, Toggle, Value
-        }
+		public enum EventType
+		{
+			Trigger,
+			Gate,
+			Toggle,
+			Value
+		}
 
-        public enum VoiceMode {
-            Mono, Poly
-        }
+		public enum VoiceMode
+		{
+			Mono,
+			Poly
+		}
 
-        public enum NoteFilter {
-            Off, NoteName, NoteNumber
-        }
+		public enum NoteFilter
+		{
+			Off,
+			NoteName,
+			NoteNumber
+		}
 
-        public enum NoteName {
-            C, CSharp, D, DSharp, E, F, FSharp, G, GSharp, A, ASharp, B
-        }
+		public enum NoteName
+		{
+			C,
+			CSharp,
+			D,
+			DSharp,
+			E,
+			F,
+			FSharp,
+			G,
+			GSharp,
+			A,
+			ASharp,
+			B
+		}
 
-        [Serializable]
-        public class NoteOnEvent : UnityEvent<int, float> {}
+		[Serializable]
+		public class NoteOnEvent : UnityEvent<int, float>
+		{
 
-        [Serializable]
-        public class NoteOffEvent : UnityEvent<int> {}
+		}
 
-        [Serializable]
-        public class ValueEvent : UnityEvent<float> {}
+		[Serializable]
+		public class NoteOffEvent : UnityEvent<int>
+		{
 
-        #endregion
+		}
 
-        #region Editable Properties
+		[Serializable]
+		public class ValueEvent : UnityEvent<float>
+		{
 
-        [SerializeField]
-        EventType _eventType = EventType.Trigger;
+		}
 
-        [SerializeField]
-        MidiChannel _channel = MidiChannel.All;
+		#endregion
 
-        [SerializeField]
-        VoiceMode _voiceMode = VoiceMode.Mono;
+		#region Editable Properties
 
-        [SerializeField]
-        NoteFilter _noteFilter = NoteFilter.Off;
+		[SerializeField]
+		EventType _eventType = EventType.Trigger;
 
-        [SerializeField]
-        NoteName _noteName;
+		[SerializeField]
+		MidiChannel _channel = MidiChannel.All;
 
-        [SerializeField]
-        int _lowestNote = 60; // C4
+		[SerializeField]
+		VoiceMode _voiceMode = VoiceMode.Mono;
 
-        [SerializeField]
-        int _highestNote = 60; // C4
+		[SerializeField]
+		NoteFilter _noteFilter = NoteFilter.Off;
 
-        [SerializeField, Range(0, 1)]
-        float _velocityOffset = 0.0f;
+		[SerializeField]
+		NoteName _noteName;
 
-        [SerializeField]
-        float _offValue = 0.0f;
+		[SerializeField]
+		int _lowestNote = 60;
+		// C4
 
-        [SerializeField]
-        float _onValue = 1.0f;
+		[SerializeField]
+		int _highestNote = 60;
+		// C4
 
-        [SerializeField]
-        FloatInterpolator.Config _interpolator;
+		[SerializeField, Range (0, 1)]
+		float _velocityOffset = 0.0f;
 
-        [SerializeField]
-        ValueEvent _triggerEvent;
+		[SerializeField]
+		float _offValue = 0.0f;
 
-        [SerializeField]
-        NoteOnEvent _noteOnEvent;
+		[SerializeField]
+		float _onValue = 1.0f;
 
-        [SerializeField]
-        NoteOffEvent _noteOffEvent;
+		[SerializeField]
+		FloatInterpolator.Config _interpolator;
 
-        [SerializeField]
-        UnityEvent _toggleOnEvent;
+		[SerializeField]
+		ValueEvent _triggerEvent;
 
-        [SerializeField]
-        UnityEvent _toggleOffEvent;
+		[SerializeField]
+		NoteOnEvent _noteOnEvent;
 
-        [SerializeField]
-        ValueEvent _valueEvent;
+		[SerializeField]
+		NoteOffEvent _noteOffEvent;
 
-        #endregion
+		[SerializeField]
+		UnityEvent _toggleOnEvent;
 
-        #region Private Properties And Variables
+		[SerializeField]
+		UnityEvent _toggleOffEvent;
 
-        int _lastNote = -1;
-        FloatInterpolator _value;
-        bool _toggle;
+		[SerializeField]
+		ValueEvent _valueEvent;
 
-        bool CompareNoteToName(int number, NoteName name)
-        {
-            return (number % 12) == (int)name;
-        }
+		#endregion
 
-        bool FilterNote(MidiChannel channel, int note)
-        {
-            if (_channel != MidiChannel.All && channel != _channel) return false;
-            if (_noteFilter == NoteFilter.Off) return true;
-            if (_noteFilter == NoteFilter.NoteName)
-                return CompareNoteToName(note, _noteName);
-            else // NoteFilter.Number
+		#region Private Properties And Variables
+
+		int _lastNote = -1;
+		FloatInterpolator _value;
+		bool _toggle;
+
+		bool CompareNoteToName (int number, NoteName name)
+		{
+			return (number % 12) == (int)name;
+		}
+
+		bool FilterNote (MidiChannel channel, int note)
+		{
+			if (_channel != MidiChannel.All && channel != _channel)
+				return false;
+			if (_noteFilter == NoteFilter.Off)
+				return true;
+			if (_noteFilter == NoteFilter.NoteName)
+				return CompareNoteToName (note, _noteName);
+			else // NoteFilter.Number
                 return _lowestNote <= note && note <= _highestNote;
-        }
+		}
 
-		void NoteOn(MidiChannel channel, int note, float velocity)
-        {
-            if (!FilterNote(channel, note)) return;
+		void NoteOn (MidiChannel channel, int note, float velocity)
+		{
+			if (!FilterNote (channel, note))
+				return;
 
-            velocity = Mathf.Lerp(_velocityOffset, 1.0f, velocity);
+			velocity = Mathf.Lerp (_velocityOffset, 1.0f, velocity);
 
-            if (_eventType == EventType.Trigger)
-            {
-                _triggerEvent.Invoke(velocity);
-            }
-            else if (_eventType == EventType.Gate)
-            {
-                if (_voiceMode == VoiceMode.Mono &&
-                    _lastNote != -1 && _lastNote != note)
-                    _noteOffEvent.Invoke(_lastNote);
+			if (_eventType == EventType.Trigger) {
+				_triggerEvent.Invoke (velocity);
+			} else if (_eventType == EventType.Gate) {
+				if (_voiceMode == VoiceMode.Mono &&
+				    _lastNote != -1 && _lastNote != note)
+					_noteOffEvent.Invoke (_lastNote);
 
-                _noteOnEvent.Invoke(note, velocity);
-                _lastNote = note;
-            }
-            else if (_eventType == EventType.Toggle)
-            {
-                _toggle ^= true;
-                if (_toggle)
-                    _toggleOnEvent.Invoke();
+				_noteOnEvent.Invoke (note, velocity);
+				_lastNote = note;
+			} else if (_eventType == EventType.Toggle) {
+				_toggle ^= true;
+				if (_toggle)
+					_toggleOnEvent.Invoke ();
+				else
+					_toggleOffEvent.Invoke ();
+			} else { // EventType.Value
+				_value.targetValue = _onValue * velocity;
+			}
+		}
+
+		void NoteOff (MidiChannel channel, int note)
+		{
+			if (!FilterNote (channel, note))
+				return;
+
+			if (_eventType == EventType.Gate) {
+				if (_voiceMode == VoiceMode.Poly || _lastNote == note) {
+					_noteOffEvent.Invoke (note);
+					_lastNote = -1;
+				}
+			} else if (_eventType == EventType.Value) {
+				_value.targetValue = _offValue;
+			}
+		}
+
+		#endregion
+
+		#region MonoBehaviour Functions
+
+		void OnEnable ()
+		{
+			MidiMaster.noteOnDelegate += NoteOn;
+			MidiMaster.noteOffDelegate += NoteOff;
+		}
+
+		void OnDisable ()
+		{
+			MidiMaster.noteOnDelegate -= NoteOn;
+			MidiMaster.noteOffDelegate -= NoteOff;
+		}
+
+		void Start ()
+		{
+			_value = new FloatInterpolator (0, _interpolator);
+		}
+
+		void Update ()
+		{
+			if (_eventType == EventType.Value)
+				_valueEvent.Invoke (_value.Step ());
+		}
+
+		public void SetNoteNumberTo (int noteNumber)
+		{
+			if (_noteFilter == NoteFilter.NoteName) {
+				int note = noteNumber % 12;
+				_noteName = (NoteName)note;
+				Debug.Log (_noteName.ToString ());
+			}
+
+			if (_noteFilter == NoteFilter.NoteNumber) {
+				_lowestNote = noteNumber;
+				_highestNote = noteNumber;
+			}
+		}
+
+		#endregion
+
+		#if UNITY_EDITOR
+
+		#region Editor Interface
+
+		bool _debugInput;
+
+		int debugNote {
+			get {
+				if (_noteFilter == NoteFilter.NoteName)
+					return (int)_noteName + 60; // C4
                 else
-                    _toggleOffEvent.Invoke();
-            }
-            else // EventType.Value
-            {
-                _value.targetValue = _onValue * velocity;
-            }
-        }
+					return _lowestNote;
+			}
+		}
 
-        void NoteOff(MidiChannel channel, int note)
-        {
-            if (!FilterNote(channel, note)) return;
+		public bool debugInput {
+			get { return _debugInput; }
+			set {
+				if (!_debugInput)
+				if (value)
+					NoteOn (_channel, debugNote, 1);
+				else if (!value)
+					NoteOff (_channel, debugNote);
+				_debugInput = value;
+			}
+		}
 
-            if (_eventType == EventType.Gate)
-            {
-                if (_voiceMode == VoiceMode.Poly || _lastNote == note)
-                {
-                    _noteOffEvent.Invoke(note);
-                    _lastNote = -1;
-                }
-            }
-            else if (_eventType == EventType.Value)
-            {
-                _value.targetValue = _offValue;
-            }
-        }
+		#endregion
 
-        #endregion
-
-        #region MonoBehaviour Functions
-
-        void OnEnable()
-        {
-            MidiMaster.noteOnDelegate += NoteOn;
-            MidiMaster.noteOffDelegate += NoteOff;
-        }
-
-        void OnDisable()
-        {
-            MidiMaster.noteOnDelegate -= NoteOn;
-            MidiMaster.noteOffDelegate -= NoteOff;
-        }
-
-        void Start()
-        {
-            _value = new FloatInterpolator(0, _interpolator);
-        }
-
-        void Update()
-        {
-            if (_eventType == EventType.Value)
-                _valueEvent.Invoke(_value.Step());
-        }
-
-        #endregion
-
-        #if UNITY_EDITOR
-
-        #region Editor Interface
-
-        bool _debugInput;
-
-        int debugNote
-        {
-            get {
-                if (_noteFilter == NoteFilter.NoteName)
-                    return (int)_noteName + 60; // C4
-                else
-                    return _lowestNote;
-            }
-        }
-
-        public bool debugInput {
-            get { return _debugInput; }
-            set {
-                if (!_debugInput)
-                    if (value) NoteOn(_channel, debugNote, 1);
-                else
-                    if (!value) NoteOff(_channel, debugNote);
-                _debugInput = value;
-            }
-        }
-
-        #endregion
-
-        #endif
-    }
+		#endif
+	}
 }
