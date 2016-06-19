@@ -22,31 +22,16 @@
 // THE SOFTWARE.
 //
 using UnityEngine;
-using UnityEngine.Events;
-using System;
 using Klak.Math;
+using Klak.Wiring;
 using MidiJack;
 
 namespace Klak.Midi
 {
-	[AddComponentMenu ("Klak/MIDI/Note Input")]
-	public class NoteInput : MonoBehaviour
+	[AddComponentMenu ("Klak/Wiring/Input/MIDI/Note Input")]
+	public class NoteInput : NodeBase
 	{
-		#region Nested Public Classes
-
-		public enum EventType
-		{
-			Trigger,
-			Gate,
-			Toggle,
-			Value
-		}
-
-		public enum VoiceMode
-		{
-			Mono,
-			Poly
-		}
+		#region Editable properties
 
 		public enum NoteFilter
 		{
@@ -71,36 +56,8 @@ namespace Klak.Midi
 			B
 		}
 
-		[Serializable]
-		public class NoteOnEvent : UnityEvent<int, float>
-		{
-
-		}
-
-		[Serializable]
-		public class NoteOffEvent : UnityEvent<int>
-		{
-
-		}
-
-		[Serializable]
-		public class ValueEvent : UnityEvent<float>
-		{
-
-		}
-
-		#endregion
-
-		#region Editable Properties
-
-		[SerializeField]
-		EventType _eventType = EventType.Trigger;
-
 		[SerializeField]
 		MidiChannel _channel = MidiChannel.All;
-
-		[SerializeField]
-		VoiceMode _voiceMode = VoiceMode.Mono;
 
 		[SerializeField]
 		NoteFilter _noteFilter = NoteFilter.Off;
@@ -116,8 +73,8 @@ namespace Klak.Midi
 		int _highestNote = 60;
 		// C4
 
-		[SerializeField, Range (0, 1)]
-		float _velocityOffset = 0.0f;
+		[SerializeField]
+		AnimationCurve _velocityCurve = AnimationCurve.Linear (0, 0, 1, 1);
 
 		[SerializeField]
 		float _offValue = 0.0f;
@@ -126,33 +83,31 @@ namespace Klak.Midi
 		float _onValue = 1.0f;
 
 		[SerializeField]
-		FloatInterpolator.Config _interpolator;
-
-		[SerializeField]
-		ValueEvent _triggerEvent;
-
-		[SerializeField]
-		NoteOnEvent _noteOnEvent;
-
-		[SerializeField]
-		NoteOffEvent _noteOffEvent;
-
-		[SerializeField]
-		UnityEvent _toggleOnEvent;
-
-		[SerializeField]
-		UnityEvent _toggleOffEvent;
-
-		[SerializeField]
-		ValueEvent _valueEvent;
+		FloatInterpolator.Config _interpolator = new FloatInterpolator.Config (
+			                                         FloatInterpolator.Config.InterpolationType.DampedSpring, 30
+		                                         );
 
 		#endregion
 
-		#region Private Properties And Variables
+		#region Node I/O
 
-		int _lastNote = -1;
-		FloatInterpolator _value;
-		bool _toggle;
+		[SerializeField, Outlet]
+		VoidEvent _noteOnEvent = new VoidEvent ();
+
+		[SerializeField, Outlet]
+		FloatEvent _noteOnVelocityEvent = new FloatEvent ();
+
+		[SerializeField, Outlet]
+		VoidEvent _noteOffEvent = new VoidEvent ();
+
+		[SerializeField, Outlet]
+		FloatEvent _valueEvent = new FloatEvent ();
+
+		#endregion
+
+		#region Private members
+
+		FloatInterpolator _floatValue;
 
 		bool CompareNoteToName (int number, NoteName name)
 		{
@@ -168,7 +123,7 @@ namespace Klak.Midi
 			if (_noteFilter == NoteFilter.NoteName)
 				return CompareNoteToName (note, _noteName);
 			else // NoteFilter.Number
-                return _lowestNote <= note && note <= _highestNote;
+				return _lowestNote <= note && note <= _highestNote;
 		}
 
 		void NoteOn (MidiChannel channel, int note, float velocity)
@@ -176,26 +131,12 @@ namespace Klak.Midi
 			if (!FilterNote (channel, note))
 				return;
 
-			velocity = Mathf.Lerp (_velocityOffset, 1.0f, velocity);
+			velocity = _velocityCurve.Evaluate (velocity);
 
-			if (_eventType == EventType.Trigger) {
-				_triggerEvent.Invoke (velocity);
-			} else if (_eventType == EventType.Gate) {
-				if (_voiceMode == VoiceMode.Mono &&
-				    _lastNote != -1 && _lastNote != note)
-					_noteOffEvent.Invoke (_lastNote);
+			_noteOnEvent.Invoke ();
+			_noteOnVelocityEvent.Invoke (velocity);
 
-				_noteOnEvent.Invoke (note, velocity);
-				_lastNote = note;
-			} else if (_eventType == EventType.Toggle) {
-				_toggle ^= true;
-				if (_toggle)
-					_toggleOnEvent.Invoke ();
-				else
-					_toggleOffEvent.Invoke ();
-			} else { // EventType.Value
-				_value.targetValue = _onValue * velocity;
-			}
+			_floatValue.targetValue = _onValue * velocity;
 		}
 
 		void NoteOff (MidiChannel channel, int note)
@@ -203,19 +144,14 @@ namespace Klak.Midi
 			if (!FilterNote (channel, note))
 				return;
 
-			if (_eventType == EventType.Gate) {
-				if (_voiceMode == VoiceMode.Poly || _lastNote == note) {
-					_noteOffEvent.Invoke (note);
-					_lastNote = -1;
-				}
-			} else if (_eventType == EventType.Value) {
-				_value.targetValue = _offValue;
-			}
+			_noteOffEvent.Invoke ();
+
+			_floatValue.targetValue = _offValue;
 		}
 
 		#endregion
 
-		#region MonoBehaviour Functions
+		#region MonoBehaviour functions
 
 		void OnEnable ()
 		{
@@ -231,14 +167,17 @@ namespace Klak.Midi
 
 		void Start ()
 		{
-			_value = new FloatInterpolator (0, _interpolator);
+			_floatValue = new FloatInterpolator (_offValue, _interpolator);
 		}
 
 		void Update ()
 		{
-			if (_eventType == EventType.Value)
-				_valueEvent.Invoke (_value.Step ());
+			_valueEvent.Invoke (_floatValue.Step ());
 		}
+
+		#endregion
+
+		#region Learn functions
 
 		public void SetNoteNumberTo (int noteNumber)
 		{
@@ -247,7 +186,7 @@ namespace Klak.Midi
 				_noteName = (NoteName)note;
 				Debug.Log (_noteName.ToString ());
 			}
-
+			
 			if (_noteFilter == NoteFilter.NoteNumber) {
 				_lowestNote = noteNumber;
 				_highestNote = noteNumber;
@@ -266,7 +205,7 @@ namespace Klak.Midi
 			get {
 				if (_noteFilter == NoteFilter.NoteName)
 					return (int)_noteName + 60; // C4
-                else
+				else
 					return _lowestNote;
 			}
 		}

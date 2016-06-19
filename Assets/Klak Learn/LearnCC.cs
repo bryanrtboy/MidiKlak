@@ -1,20 +1,31 @@
-﻿using UnityEngine;
+﻿//Changes made to KnobInput.cs
+//
+//#region Learn
+//
+//public void SetKnobNumberTo (int knobNumber)
+//{
+//	_knobNumber = knobNumber;
+//}
+//
+//#endregion
+
+using UnityEngine;
 using System.Collections;
 using MidiJack;
 using UnityEngine.UI;
 
 namespace Klak.Midi
 {
-	[RequireComponent (typeof(NoteInput))]
-	public class LearnNote : MonoBehaviour
+	[RequireComponent (typeof(KnobInput))]
+	public class LearnCC : MonoBehaviour
 	{
 
 		public Image m_UIIndicator;
-		public StoredNoteValue.SavedName m_name;
+		public StoredCCValue.SavedName m_name;
 
 		MidiChannel _channel = MidiChannel.All;
 		bool m_isLearning = false;
-		NoteInput m_noteInput;
+		KnobInput m_knob;
 		Text m_UIIndicatorLabel;
 
 		void Awake ()
@@ -31,22 +42,22 @@ namespace Klak.Midi
 			if (m_UIIndicatorLabel)
 				m_UIIndicatorLabel.text = m_name.ToString ();
 
-			m_noteInput = GetComponent<NoteInput> () as NoteInput;
+			m_knob = GetComponent<KnobInput> () as KnobInput;
 
 			if (PlayerPrefs.HasKey (m_name.ToString ()))
-				m_noteInput.SetNoteNumberTo (PlayerPrefs.GetInt (m_name.ToString ()));
+				m_knob.SetKnobNumberTo (PlayerPrefs.GetInt (m_name.ToString ()));
 				
 
 		}
 
 		void OnEnable ()
 		{
-			MidiMaster.noteOnDelegate += NoteOn;
+			MidiMaster.knobDelegate += OnKnobUpdate;
 		}
 
 		void OnDisable ()
 		{
-			MidiMaster.noteOnDelegate -= NoteOn;
+			MidiMaster.knobDelegate -= OnKnobUpdate;
 		}
 
 		void Update ()
@@ -62,19 +73,20 @@ namespace Klak.Midi
 		}
 
 
-		void NoteOn (MidiChannel channel, int noteNumber, float knobValue)
+		void OnKnobUpdate (MidiChannel channel, int knobNumber, float knobValue)
 		{
 			if (!m_isLearning)
 				return;
 
-			m_noteInput.SetNoteNumberTo (noteNumber);
-			PlayerPrefs.SetInt (m_name.ToString (), noteNumber);
+			m_knob.SetKnobNumberTo (knobNumber);
+			PlayerPrefs.SetInt (m_name.ToString (), knobNumber);
 			m_isLearning = false;
 			m_UIIndicator.color = new Color (0f, .7f, .2f, 1);
 
 		}
 
-
 	}
+
+
 
 }

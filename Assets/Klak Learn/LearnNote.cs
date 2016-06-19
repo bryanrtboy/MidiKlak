@@ -1,20 +1,40 @@
-﻿using UnityEngine;
+﻿//Requires changes to NoteInput.cs
+//
+//#region Learn functions
+//
+//public void SetNoteNumberTo (int noteNumber)
+//{
+//	if (_noteFilter == NoteFilter.NoteName) {
+//		int note = noteNumber % 12;
+//		_noteName = (NoteName)note;
+//		Debug.Log (_noteName.ToString ());
+//	}
+//
+//	if (_noteFilter == NoteFilter.NoteNumber) {
+//		_lowestNote = noteNumber;
+//		_highestNote = noteNumber;
+//	}
+//}
+//
+//#endregion
+
+using UnityEngine;
 using System.Collections;
 using MidiJack;
 using UnityEngine.UI;
 
 namespace Klak.Midi
 {
-	[RequireComponent (typeof(KnobInput))]
-	public class LearnCC : MonoBehaviour
+	[RequireComponent (typeof(NoteInput))]
+	public class LearnNote : MonoBehaviour
 	{
 
 		public Image m_UIIndicator;
-		public StoredCCValue.SavedName m_name;
+		public StoredNoteValue.SavedName m_name;
 
 		MidiChannel _channel = MidiChannel.All;
 		bool m_isLearning = false;
-		KnobInput m_knob;
+		NoteInput m_noteInput;
 		Text m_UIIndicatorLabel;
 
 		void Awake ()
@@ -31,22 +51,22 @@ namespace Klak.Midi
 			if (m_UIIndicatorLabel)
 				m_UIIndicatorLabel.text = m_name.ToString ();
 
-			m_knob = GetComponent<KnobInput> () as KnobInput;
+			m_noteInput = GetComponent<NoteInput> () as NoteInput;
 
 			if (PlayerPrefs.HasKey (m_name.ToString ()))
-				m_knob.SetKnobNumberTo (PlayerPrefs.GetInt (m_name.ToString ()));
+				m_noteInput.SetNoteNumberTo (PlayerPrefs.GetInt (m_name.ToString ()));
 				
 
 		}
 
 		void OnEnable ()
 		{
-			MidiMaster.knobDelegate += OnKnobUpdate;
+			MidiMaster.noteOnDelegate += NoteOn;
 		}
 
 		void OnDisable ()
 		{
-			MidiMaster.knobDelegate -= OnKnobUpdate;
+			MidiMaster.noteOnDelegate -= NoteOn;
 		}
 
 		void Update ()
@@ -62,13 +82,13 @@ namespace Klak.Midi
 		}
 
 
-		void OnKnobUpdate (MidiChannel channel, int knobNumber, float knobValue)
+		void NoteOn (MidiChannel channel, int noteNumber, float knobValue)
 		{
 			if (!m_isLearning)
 				return;
 
-			m_knob.SetKnobNumberTo (knobNumber);
-			PlayerPrefs.SetInt (m_name.ToString (), knobNumber);
+			m_noteInput.SetNoteNumberTo (noteNumber);
+			PlayerPrefs.SetInt (m_name.ToString (), noteNumber);
 			m_isLearning = false;
 			m_UIIndicator.color = new Color (0f, .7f, .2f, 1);
 
