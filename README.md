@@ -21,12 +21,21 @@ installing *MidiKlak*.
 How To Use It
 -------------
 
-*MidiKlak* provides only two components -- **NoteInput** and **KnobInput**.
+*MidiKlak*-Learn provides two components -- **NoteLearnInput** and **KnobLearnInput**.
 
 - **NoteLearnInput** - receives MIDI note messages and invokes Unity events
   with input values (note number and velocity).
 - **KnobLearnInput** - receives MIDI CC (control change) messages and invokes
   Unity events with a single float value.
+
+In addition we have **LearnCC** and **LearnNote**.
+- **LearnCC** - is attached to a UI Button (radial) and visually shows input from a CC Knob
+- **LearnNote** - is attached to a UI Button and is on/off based on input.
+
+Both Buttons can be clicked to enter a **Learn** state, the next input from MIDI sets the button or knob to that particular knob.
+
+**SetCC** and **SetNote** will read from the PlayerPreference and set based on the last time Midi-Learn was run.
+
 
 For further details of usage, please refer the sample scenes in the "Samples"
 directory.
