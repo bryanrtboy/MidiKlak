@@ -1,7 +1,7 @@
 MidiKlak
 ========
 
-*MidiKlak-Learn* is based on *MidiKlak*, an extension for [Klak][Klak], that provides functionality for
+*MidiKlak-Learn* is based on [MidiKlak][MidiKlak], an extension for [Klak][Klak], that provides functionality for
 receiving MIDI messages from physical/virtual MIDI devices.
 
 ![gif](http://49.media.tumblr.com/6eb313a0e36f25195e470d59839a530a/tumblr_o1mcacuoft1qio469o1_400.gif)
