@@ -37,8 +37,8 @@ Both Buttons can be clicked to enter a **Learn** state, the next input from MIDI
 **SetCC** and **SetNote** will read from the PlayerPreference and set based on the last time Midi-Learn was run.
 
 
-For further details of usage, please refer the sample scenes in the "Samples"
-directory.
+For further details of usage, please refer to [MidiKlak][MidiKlak], which contain sample scenes in the "Samples"
+directory (these were deleted from *MidiKlak-Learn*).
 
 [Klak]: https://github.com/keijiro/Klak
 [MidiJack]: https://github.com/keijiro/MidiJack
