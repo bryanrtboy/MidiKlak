@@ -1,7 +1,7 @@
 MidiKlak
 ========
 
-*MidiKlak*-Learn is an extension for [Klak][Klak], that provides functionality for
+*MidiKlak-Learn* is based on *MidiKlak*, an extension for [Klak][Klak], that provides functionality for
 receiving MIDI messages from physical/virtual MIDI devices.
 
 ![gif](http://49.media.tumblr.com/6eb313a0e36f25195e470d59839a530a/tumblr_o1mcacuoft1qio469o1_400.gif)
@@ -12,8 +12,8 @@ System Requirements
 - Unity 5
 - Windows or Mac OS X
 
-*MidiKlak*-Learn has dependency to the following packages. Please import them before
-installing *MidiKlak*.
+*MidiKlak-Learn* has dependency to the following packages. Please import them before
+installing *MidiKlak-Learn*.
 
 - [Klak][Klak]
 - [MidiJack][MidiJack]
