@@ -1,15 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
-SceneSettings:
+OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
-  m_PVSObjectsArray: []
-  m_PVSPortalsArray: []
+  serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18053581, g: 0.2260178, b: 0.30718684, a: 1}
+  m_IndirectSpecularColor: {r: 0.16789529, g: 0.21075128, b: 0.28994903, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -79,31 +79,32 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
+    agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    accuratePlacement: 0
     minRegionArea: 2
-    cellSize: 0.16666667
     manualCellSize: 0
+    cellSize: 0.16666667
+    accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &2610057
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2610058}
-  - 222: {fileID: 2610064}
-  - 114: {fileID: 2610063}
-  - 114: {fileID: 2610062}
-  - 114: {fileID: 2610060}
-  - 114: {fileID: 2610059}
-  - 114: {fileID: 2610061}
+  - component: {fileID: 2610058}
+  - component: {fileID: 2610064}
+  - component: {fileID: 2610063}
+  - component: {fileID: 2610062}
+  - component: {fileID: 2610060}
+  - component: {fileID: 2610059}
+  - component: {fileID: 2610061}
   m_Layer: 5
   m_Name: Knob (5)
   m_TagString: Untagged
@@ -172,12 +173,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -304,15 +307,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 23903174}
-  - 222: {fileID: 23903180}
-  - 114: {fileID: 23903179}
-  - 114: {fileID: 23903178}
-  - 114: {fileID: 23903177}
-  - 114: {fileID: 23903176}
-  - 114: {fileID: 23903175}
+  - component: {fileID: 23903174}
+  - component: {fileID: 23903180}
+  - component: {fileID: 23903179}
+  - component: {fileID: 23903178}
+  - component: {fileID: 23903177}
+  - component: {fileID: 23903176}
+  - component: {fileID: 23903175}
   m_Layer: 5
   m_Name: Button (8)
   m_TagString: Untagged
@@ -359,12 +362,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -545,15 +550,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 25692995}
-  - 222: {fileID: 25693001}
-  - 114: {fileID: 25693000}
-  - 114: {fileID: 25692999}
-  - 114: {fileID: 25692998}
-  - 114: {fileID: 25692997}
-  - 114: {fileID: 25692996}
+  - component: {fileID: 25692995}
+  - component: {fileID: 25693001}
+  - component: {fileID: 25693000}
+  - component: {fileID: 25692999}
+  - component: {fileID: 25692998}
+  - component: {fileID: 25692997}
+  - component: {fileID: 25692996}
   m_Layer: 5
   m_Name: Button (6)
   m_TagString: Untagged
@@ -600,12 +605,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -786,11 +793,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 35220012}
-  - 222: {fileID: 35220014}
-  - 114: {fileID: 35220013}
+  - component: {fileID: 35220012}
+  - component: {fileID: 35220014}
+  - component: {fileID: 35220013}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -860,11 +867,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 80857690}
-  - 222: {fileID: 80857692}
-  - 114: {fileID: 80857691}
+  - component: {fileID: 80857690}
+  - component: {fileID: 80857692}
+  - component: {fileID: 80857691}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -934,11 +941,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 97716993}
-  - 222: {fileID: 97716995}
-  - 114: {fileID: 97716994}
+  - component: {fileID: 97716993}
+  - component: {fileID: 97716995}
+  - component: {fileID: 97716994}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1008,13 +1015,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 101195479}
-  - 20: {fileID: 101195478}
-  - 92: {fileID: 101195477}
-  - 124: {fileID: 101195476}
-  - 81: {fileID: 101195475}
+  - component: {fileID: 101195479}
+  - component: {fileID: 101195478}
+  - component: {fileID: 101195477}
+  - component: {fileID: 101195476}
+  - component: {fileID: 101195475}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1071,7 +1078,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 0
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1095,11 +1102,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 266435566}
-  - 222: {fileID: 266435568}
-  - 114: {fileID: 266435567}
+  - component: {fileID: 266435566}
+  - component: {fileID: 266435568}
+  - component: {fileID: 266435567}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1169,11 +1176,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 324276528}
-  - 222: {fileID: 324276530}
-  - 114: {fileID: 324276529}
+  - component: {fileID: 324276528}
+  - component: {fileID: 324276530}
+  - component: {fileID: 324276529}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1243,10 +1250,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 373167879}
-  - 108: {fileID: 373167878}
+  - component: {fileID: 373167879}
+  - component: {fileID: 373167878}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1271,6 +1278,7 @@ Light:
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
+    m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
@@ -1305,15 +1313,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 384269490}
-  - 222: {fileID: 384269496}
-  - 114: {fileID: 384269495}
-  - 114: {fileID: 384269494}
-  - 114: {fileID: 384269492}
-  - 114: {fileID: 384269491}
-  - 114: {fileID: 384269493}
+  - component: {fileID: 384269490}
+  - component: {fileID: 384269496}
+  - component: {fileID: 384269495}
+  - component: {fileID: 384269494}
+  - component: {fileID: 384269492}
+  - component: {fileID: 384269491}
+  - component: {fileID: 384269493}
   m_Layer: 5
   m_Name: Knob (4)
   m_TagString: Untagged
@@ -1382,12 +1390,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -1514,11 +1524,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 399056086}
-  - 222: {fileID: 399056088}
-  - 114: {fileID: 399056087}
+  - component: {fileID: 399056086}
+  - component: {fileID: 399056088}
+  - component: {fileID: 399056087}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1588,15 +1598,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 427917689}
-  - 222: {fileID: 427917694}
-  - 114: {fileID: 427917693}
-  - 114: {fileID: 427917690}
-  - 114: {fileID: 427917691}
-  - 114: {fileID: 427917695}
-  - 114: {fileID: 427917692}
+  - component: {fileID: 427917689}
+  - component: {fileID: 427917694}
+  - component: {fileID: 427917693}
+  - component: {fileID: 427917690}
+  - component: {fileID: 427917691}
+  - component: {fileID: 427917695}
+  - component: {fileID: 427917692}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -1708,12 +1718,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -1829,11 +1841,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 438450672}
-  - 222: {fileID: 438450674}
-  - 114: {fileID: 438450673}
+  - component: {fileID: 438450672}
+  - component: {fileID: 438450674}
+  - component: {fileID: 438450673}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1903,11 +1915,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 480152441}
-  - 222: {fileID: 480152443}
-  - 114: {fileID: 480152442}
+  - component: {fileID: 480152441}
+  - component: {fileID: 480152443}
+  - component: {fileID: 480152442}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1977,15 +1989,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 531808577}
-  - 222: {fileID: 531808583}
-  - 114: {fileID: 531808582}
-  - 114: {fileID: 531808581}
-  - 114: {fileID: 531808580}
-  - 114: {fileID: 531808579}
-  - 114: {fileID: 531808578}
+  - component: {fileID: 531808577}
+  - component: {fileID: 531808583}
+  - component: {fileID: 531808582}
+  - component: {fileID: 531808581}
+  - component: {fileID: 531808580}
+  - component: {fileID: 531808579}
+  - component: {fileID: 531808578}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -2032,12 +2044,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -2218,15 +2232,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 575573077}
-  - 222: {fileID: 575573083}
-  - 114: {fileID: 575573082}
-  - 114: {fileID: 575573081}
-  - 114: {fileID: 575573079}
-  - 114: {fileID: 575573078}
-  - 114: {fileID: 575573080}
+  - component: {fileID: 575573077}
+  - component: {fileID: 575573083}
+  - component: {fileID: 575573082}
+  - component: {fileID: 575573081}
+  - component: {fileID: 575573079}
+  - component: {fileID: 575573078}
+  - component: {fileID: 575573080}
   m_Layer: 5
   m_Name: Knob (2)
   m_TagString: Untagged
@@ -2295,12 +2309,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -2427,12 +2443,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 577764933}
-  - 223: {fileID: 577764932}
-  - 114: {fileID: 577764931}
-  - 114: {fileID: 577764930}
+  - component: {fileID: 577764933}
+  - component: {fileID: 577764932}
+  - component: {fileID: 577764931}
+  - component: {fileID: 577764930}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2507,6 +2523,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1458989773}
+  - {fileID: 2108722130}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2520,15 +2537,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 632481311}
-  - 222: {fileID: 632481317}
-  - 114: {fileID: 632481316}
-  - 114: {fileID: 632481315}
-  - 114: {fileID: 632481313}
-  - 114: {fileID: 632481312}
-  - 114: {fileID: 632481314}
+  - component: {fileID: 632481311}
+  - component: {fileID: 632481317}
+  - component: {fileID: 632481316}
+  - component: {fileID: 632481315}
+  - component: {fileID: 632481313}
+  - component: {fileID: 632481312}
+  - component: {fileID: 632481314}
   m_Layer: 5
   m_Name: Knob (8)
   m_TagString: Untagged
@@ -2597,12 +2614,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -2729,15 +2748,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 644900363}
-  - 222: {fileID: 644900369}
-  - 114: {fileID: 644900368}
-  - 114: {fileID: 644900367}
-  - 114: {fileID: 644900365}
-  - 114: {fileID: 644900364}
-  - 114: {fileID: 644900366}
+  - component: {fileID: 644900363}
+  - component: {fileID: 644900369}
+  - component: {fileID: 644900368}
+  - component: {fileID: 644900367}
+  - component: {fileID: 644900365}
+  - component: {fileID: 644900364}
+  - component: {fileID: 644900366}
   m_Layer: 5
   m_Name: Knob (3)
   m_TagString: Untagged
@@ -2806,12 +2825,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -2938,15 +2959,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 744442174}
-  - 222: {fileID: 744442180}
-  - 114: {fileID: 744442179}
-  - 114: {fileID: 744442178}
-  - 114: {fileID: 744442177}
-  - 114: {fileID: 744442176}
-  - 114: {fileID: 744442175}
+  - component: {fileID: 744442174}
+  - component: {fileID: 744442180}
+  - component: {fileID: 744442179}
+  - component: {fileID: 744442178}
+  - component: {fileID: 744442177}
+  - component: {fileID: 744442176}
+  - component: {fileID: 744442175}
   m_Layer: 5
   m_Name: Button (7)
   m_TagString: Untagged
@@ -2993,12 +3014,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -3179,11 +3202,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 783347993}
-  - 222: {fileID: 783347995}
-  - 114: {fileID: 783347994}
+  - component: {fileID: 783347993}
+  - component: {fileID: 783347995}
+  - component: {fileID: 783347994}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3253,11 +3276,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 802089113}
-  - 114: {fileID: 802089112}
-  - 114: {fileID: 802089111}
+  - component: {fileID: 802089113}
+  - component: {fileID: 802089112}
+  - component: {fileID: 802089111}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3315,11 +3338,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 811811793}
-  - 222: {fileID: 811811795}
-  - 114: {fileID: 811811794}
+  - component: {fileID: 811811793}
+  - component: {fileID: 811811795}
+  - component: {fileID: 811811794}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3384,16 +3407,90 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 811811792}
+--- !u!1 &937845386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 937845387}
+  - component: {fileID: 937845389}
+  - component: {fileID: 937845388}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &937845387
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937845386}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2108722130}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &937845388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937845386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: X
+--- !u!222 &937845389
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 937845386}
 --- !u!1 &952264984
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 952264985}
-  - 222: {fileID: 952264987}
-  - 114: {fileID: 952264986}
+  - component: {fileID: 952264985}
+  - component: {fileID: 952264987}
+  - component: {fileID: 952264986}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3463,15 +3560,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1171434037}
-  - 222: {fileID: 1171434043}
-  - 114: {fileID: 1171434042}
-  - 114: {fileID: 1171434041}
-  - 114: {fileID: 1171434039}
-  - 114: {fileID: 1171434038}
-  - 114: {fileID: 1171434040}
+  - component: {fileID: 1171434037}
+  - component: {fileID: 1171434043}
+  - component: {fileID: 1171434042}
+  - component: {fileID: 1171434041}
+  - component: {fileID: 1171434039}
+  - component: {fileID: 1171434038}
+  - component: {fileID: 1171434040}
   m_Layer: 5
   m_Name: Knob (6)
   m_TagString: Untagged
@@ -3540,12 +3637,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -3672,15 +3771,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1247686520}
-  - 222: {fileID: 1247686526}
-  - 114: {fileID: 1247686525}
-  - 114: {fileID: 1247686524}
-  - 114: {fileID: 1247686523}
-  - 114: {fileID: 1247686522}
-  - 114: {fileID: 1247686521}
+  - component: {fileID: 1247686520}
+  - component: {fileID: 1247686526}
+  - component: {fileID: 1247686525}
+  - component: {fileID: 1247686524}
+  - component: {fileID: 1247686523}
+  - component: {fileID: 1247686522}
+  - component: {fileID: 1247686521}
   m_Layer: 5
   m_Name: Button (5)
   m_TagString: Untagged
@@ -3727,12 +3826,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -3913,15 +4014,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1283584135}
-  - 222: {fileID: 1283584141}
-  - 114: {fileID: 1283584140}
-  - 114: {fileID: 1283584139}
-  - 114: {fileID: 1283584138}
-  - 114: {fileID: 1283584137}
-  - 114: {fileID: 1283584136}
+  - component: {fileID: 1283584135}
+  - component: {fileID: 1283584141}
+  - component: {fileID: 1283584140}
+  - component: {fileID: 1283584139}
+  - component: {fileID: 1283584138}
+  - component: {fileID: 1283584137}
+  - component: {fileID: 1283584136}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -3968,12 +4069,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -4154,15 +4257,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1412024005}
-  - 222: {fileID: 1412024011}
-  - 114: {fileID: 1412024010}
-  - 114: {fileID: 1412024009}
-  - 114: {fileID: 1412024007}
-  - 114: {fileID: 1412024006}
-  - 114: {fileID: 1412024008}
+  - component: {fileID: 1412024005}
+  - component: {fileID: 1412024011}
+  - component: {fileID: 1412024010}
+  - component: {fileID: 1412024009}
+  - component: {fileID: 1412024007}
+  - component: {fileID: 1412024006}
+  - component: {fileID: 1412024008}
   m_Layer: 5
   m_Name: Knob (7)
   m_TagString: Untagged
@@ -4231,12 +4334,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -4363,15 +4468,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1429523324}
-  - 222: {fileID: 1429523327}
-  - 114: {fileID: 1429523326}
-  - 114: {fileID: 1429523329}
-  - 114: {fileID: 1429523328}
-  - 114: {fileID: 1429523330}
-  - 114: {fileID: 1429523325}
+  - component: {fileID: 1429523324}
+  - component: {fileID: 1429523327}
+  - component: {fileID: 1429523326}
+  - component: {fileID: 1429523329}
+  - component: {fileID: 1429523328}
+  - component: {fileID: 1429523330}
+  - component: {fileID: 1429523325}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -4418,12 +4523,14 @@ MonoBehaviour:
   _velocityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -4604,12 +4711,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1458989773}
-  - 222: {fileID: 1458989776}
-  - 114: {fileID: 1458989775}
-  - 114: {fileID: 1458989774}
+  - component: {fileID: 1458989773}
+  - component: {fileID: 1458989776}
+  - component: {fileID: 1458989775}
+  - component: {fileID: 1458989774}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -4712,11 +4819,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1579221982}
-  - 222: {fileID: 1579221984}
-  - 114: {fileID: 1579221983}
+  - component: {fileID: 1579221982}
+  - component: {fileID: 1579221984}
+  - component: {fileID: 1579221983}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -4786,15 +4893,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1642100653}
-  - 222: {fileID: 1642100656}
-  - 114: {fileID: 1642100655}
-  - 114: {fileID: 1642100658}
-  - 114: {fileID: 1642100657}
-  - 114: {fileID: 1642100659}
-  - 114: {fileID: 1642100654}
+  - component: {fileID: 1642100653}
+  - component: {fileID: 1642100656}
+  - component: {fileID: 1642100655}
+  - component: {fileID: 1642100658}
+  - component: {fileID: 1642100657}
+  - component: {fileID: 1642100659}
+  - component: {fileID: 1642100654}
   m_Layer: 5
   m_Name: Knob (1)
   m_TagString: Untagged
@@ -4838,12 +4945,14 @@ MonoBehaviour:
   _responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 1
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 1
       inSlope: 1
       outSlope: 0
@@ -4995,11 +5104,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1709061808}
-  - 222: {fileID: 1709061810}
-  - 114: {fileID: 1709061809}
+  - component: {fileID: 1709061808}
+  - component: {fileID: 1709061810}
+  - component: {fileID: 1709061809}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5069,11 +5178,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1720237062}
-  - 222: {fileID: 1720237064}
-  - 114: {fileID: 1720237063}
+  - component: {fileID: 1720237062}
+  - component: {fileID: 1720237064}
+  - component: {fileID: 1720237063}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5138,16 +5247,44 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1720237061}
+--- !u!1 &1772609782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1772609784}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772609784
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1772609782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1669, y: 2.0000002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1998539909
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1998539910}
-  - 222: {fileID: 1998539912}
-  - 114: {fileID: 1998539911}
+  - component: {fileID: 1998539910}
+  - component: {fileID: 1998539912}
+  - component: {fileID: 1998539911}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5217,11 +5354,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2002923729}
-  - 222: {fileID: 2002923731}
-  - 114: {fileID: 2002923730}
+  - component: {fileID: 2002923729}
+  - component: {fileID: 2002923731}
+  - component: {fileID: 2002923730}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5286,3 +5423,114 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2002923728}
+--- !u!1 &2108722129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2108722130}
+  - component: {fileID: 2108722133}
+  - component: {fileID: 2108722132}
+  - component: {fileID: 2108722131}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2108722130
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108722129}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9732406, y: 0.9732406, z: 1}
+  m_Children:
+  - {fileID: 937845387}
+  m_Father: {fileID: 577764933}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -38.929604, y: -38.929565}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2108722131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108722129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2108722132}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &2108722132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108722129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 1
+  m_FillCenter: 0
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &2108722133
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2108722129}

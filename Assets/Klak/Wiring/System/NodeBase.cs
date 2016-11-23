@@ -31,43 +31,62 @@ using System;
 
 namespace Klak.Wiring
 {
-    // Attribute for marking inlets
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
-    public class InletAttribute : Attribute
-    {
-        public InletAttribute() {}
-    }
+	// Attribute for marking inlets
+	[AttributeUsage (AttributeTargets.Property | AttributeTargets.Method)]
+	public class InletAttribute : Attribute
+	{
+		public InletAttribute ()
+		{
+		}
+	}
 
-    // Attribute for marking outlets
-    [AttributeUsage(AttributeTargets.Field)]
-    public class OutletAttribute : Attribute
-    {
-        public OutletAttribute() {}
-    }
+	// Attribute for marking outlets
+	[AttributeUsage (AttributeTargets.Field)]
+	public class OutletAttribute : Attribute
+	{
+		public OutletAttribute ()
+		{
+		}
+	}
 
-    // Base class of wiring node classes
-    public class NodeBase : MonoBehaviour
-    {
-        [SerializeField, HideInInspector]
-        Vector2 _wiringNodePosition = uninitializedNodePosition;
+	// Base class of wiring node classes
+	public class NodeBase : MonoBehaviour
+	{
+		[SerializeField, HideInInspector]
+		Vector2 _wiringNodePosition = uninitializedNodePosition;
 
-        [Serializable]
-        public class VoidEvent : UnityEvent {}
+		[Serializable]
+		public class VoidEvent : UnityEvent
+		{
 
-        [Serializable]
-        public class FloatEvent : UnityEvent<float> {}
+		}
 
-        [Serializable]
-        public class Vector3Event : UnityEvent<Vector3> {}
+		[Serializable]
+		public class FloatEvent : UnityEvent<float>
+		{
 
-        [Serializable]
-        public class QuaternionEvent : UnityEvent<Quaternion> {}
+		}
 
-        [Serializable]
-        public class ColorEvent : UnityEvent<Color> {}
+		[Serializable]
+		public class Vector3Event : UnityEvent<Vector3>
+		{
 
-        static public Vector2 uninitializedNodePosition {
-            get { return new Vector2(-1000, -1000); }
-        }
-    }
+		}
+
+		[Serializable]
+		public class QuaternionEvent : UnityEvent<Quaternion>
+		{
+
+		}
+
+		[Serializable]
+		public class ColorEvent : UnityEvent<Color>
+		{
+
+		}
+
+		static public Vector2 uninitializedNodePosition {
+			get { return new Vector2 (-1000, -1000); }
+		}
+	}
 }

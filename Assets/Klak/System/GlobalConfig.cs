@@ -25,23 +25,24 @@ using UnityEngine;
 
 namespace Klak.System
 {
-    [AddComponentMenu("Klak/System/Global Config")]
-    public class GlobalConfig : MonoBehaviour
-    {
-        #region Editable Properties
+	[AddComponentMenu ("Klak/System/Global Config")]
+	public class GlobalConfig : MonoBehaviour
+	{
+		#region Editable Properties
 
-        [SerializeField]
-        bool _hideCursor = false;
+		[SerializeField]
+		bool _hideCursor = false;
 
-        #endregion
+		#endregion
 
-        #region MonoBehaviour Functions
+		#region MonoBehaviour Functions
 
-        void Start()
-        {
-            if (_hideCursor && !Application.isEditor) Cursor.visible = false;
-        }
+		void Start ()
+		{
+			if (_hideCursor && !Application.isEditor)
+				Cursor.visible = false;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

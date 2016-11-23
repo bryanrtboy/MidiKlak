@@ -26,23 +26,23 @@ using UnityEditor;
 
 namespace Klak.Wiring
 {
-    [CanEditMultipleObjects]
-    [CustomEditor(typeof(Patch))]
-    public class PatchEditor : Editor
-    {
-        [MenuItem("GameObject/Create Other/Klak/Patch")]
-        static void CreatePatch()
-        {
-            var go = new GameObject("Patch");
-            go.AddComponent<Patch>();
-            Selection.activeGameObject = go;
-        }
+	[CanEditMultipleObjects]
+	[CustomEditor (typeof(Patch))]
+	public class PatchEditor : Editor
+	{
+		[MenuItem ("GameObject/Create Other/Klak/Patch")]
+		static void CreatePatch ()
+		{
+			var go = new GameObject ("Patch");
+			go.AddComponent<Patch> ();
+			Selection.activeGameObject = go;
+		}
 
-        public override void OnInspectorGUI()
-        {
-            if (!EditorApplication.isPlaying)
-                if (GUILayout.Button("Open Patcher", "LargeButton"))
-                    Patcher.PatcherWindow.OpenPatch((Patch)target);
-        }
-    }
+		public override void OnInspectorGUI ()
+		{
+			if (!EditorApplication.isPlaying)
+			if (GUILayout.Button ("Open Patcher", "LargeButton"))
+				Patcher.PatcherWindow.OpenPatch ((Patch)target);
+		}
+	}
 }

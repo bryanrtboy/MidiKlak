@@ -28,86 +28,85 @@ using System.Collections.ObjectModel;
 
 namespace Klak.Wiring.Patcher
 {
-    // Editor representation of patch
-    // It also manages mapping information between
-    // node instances (NodeBase) and those editor representations.
-    public class Patch
-    {
-        #region Public properties and methods
+	// Editor representation of patch
+	// It also manages mapping information between
+	// node instances (NodeBase) and those editor representations.
+	public class Patch
+	{
+		#region Public properties and methods
 
-        // Validity check
-        public bool isValid {
-            get { return _instance != null; }
-        }
+		// Validity check
+		public bool isValid {
+			get { return _instance != null; }
+		}
 
-        // Read-only node list
-        public ReadOnlyCollection<Node> nodeList {
-            get { return new ReadOnlyCollection<Node>(_nodeList); }
-        }
+		// Read-only node list
+		public ReadOnlyCollection<Node> nodeList {
+			get { return new ReadOnlyCollection<Node> (_nodeList); }
+		}
 
-        // Constructor
-        public Patch(Wiring.Patch instance)
-        {
-            _instance = instance;
-            _nodeList = new List<Node>();
-            _instanceIDToNodeMap = new Dictionary<int, Node>();
+		// Constructor
+		public Patch (Wiring.Patch instance)
+		{
+			_instance = instance;
+			_nodeList = new List<Node> ();
+			_instanceIDToNodeMap = new Dictionary<int, Node> ();
 
-            Rescan();
-        }
+			Rescan ();
+		}
 
-        // Check if this is a representation of the given patch instance.
-        public bool IsRepresentationOf(Wiring.Patch instance)
-        {
-            return _instance == instance;
-        }
+		// Check if this is a representation of the given patch instance.
+		public bool IsRepresentationOf (Wiring.Patch instance)
+		{
+			return _instance == instance;
+		}
 
-        // Get an editor representation of the given node.
-        public Node GetNodeOfInstance(Wiring.NodeBase instance)
-        {
-            return _instanceIDToNodeMap[instance.GetInstanceID()];
-        }
+		// Get an editor representation of the given node.
+		public Node GetNodeOfInstance (Wiring.NodeBase instance)
+		{
+			return _instanceIDToNodeMap [instance.GetInstanceID ()];
+		}
 
-        // Rescan the patch.
-        public void Rescan()
-        {
-            _nodeList.Clear();
-            _instanceIDToNodeMap.Clear();
+		// Rescan the patch.
+		public void Rescan ()
+		{
+			_nodeList.Clear ();
+			_instanceIDToNodeMap.Clear ();
 
-            // Enumerate all the node instances.
-            foreach (var i in _instance.GetComponentsInChildren<Wiring.NodeBase>())
-            {
-                var node = new Node(i);
-                _nodeList.Add(node);
-                _instanceIDToNodeMap.Add(i.GetInstanceID(), node);
-            }
-        }
+			// Enumerate all the node instances.
+			foreach (var i in _instance.GetComponentsInChildren<Wiring.NodeBase>()) {
+				var node = new Node (i);
+				_nodeList.Add (node);
+				_instanceIDToNodeMap.Add (i.GetInstanceID (), node);
+			}
+		}
 
-        // Check validity of all nodes in this patch.
-        public bool CheckNodesValidity()
-        {
-            return !_nodeList.Exists(p => p == null);
-        }
+		// Check validity of all nodes in this patch.
+		public bool CheckNodesValidity ()
+		{
+			return !_nodeList.Exists (p => p == null);
+		}
 
-        // Add a node instance to the patch.
-        public void AddNodeInstance(Wiring.NodeBase nodeInstance)
-        {
-            // Append to the hierarchy.
-            nodeInstance.transform.parent = _instance.transform;
+		// Add a node instance to the patch.
+		public void AddNodeInstance (Wiring.NodeBase nodeInstance)
+		{
+			// Append to the hierarchy.
+			nodeInstance.transform.parent = _instance.transform;
 
-            // Register to this patch representation.
-            var node = new Node(nodeInstance);
-            _nodeList.Add(node);
-            _instanceIDToNodeMap.Add(nodeInstance.GetInstanceID(), node);
-        }
+			// Register to this patch representation.
+			var node = new Node (nodeInstance);
+			_nodeList.Add (node);
+			_instanceIDToNodeMap.Add (nodeInstance.GetInstanceID (), node);
+		}
 
-        #endregion
+		#endregion
 
-        #region Private members
+		#region Private members
 
-        Wiring.Patch _instance;
-        List<Node> _nodeList;
-        Dictionary<int, Node> _instanceIDToNodeMap;
+		Wiring.Patch _instance;
+		List<Node> _nodeList;
+		Dictionary<int, Node> _instanceIDToNodeMap;
 
-        #endregion
-    }
+		#endregion
+	}
 }
